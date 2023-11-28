@@ -2,9 +2,6 @@ class BinarySearchTree {
     private Node root;
     private int count;
 
-    // Restante do código da classe BinarySearchTree permanece inalterado
-    // ...
-
     public void add(Integer v) {
         Node prev, current;
         Node node = new Node();
@@ -233,8 +230,8 @@ class BinarySearchTree {
 
     public void printTree() {
         if(root != null) {
-            TreeFormatter formatter = new TreeFormatter();
-            System.out.println(formatter.topDownBinarySearchTree(root));
+            TreeFormatterBT formatter = new TreeFormatterBT();
+            System.out.println(formatter.topDown(root));
         } else {
             System.out.println("Árvore vazia!");
         }
@@ -283,6 +280,7 @@ class BinarySearchTree {
         }
     }
 
+    // Atividade 1d - Soma entre nodos
     public int sumBetween(int start, int end) {
         int soma = 0;
         Node current = root;

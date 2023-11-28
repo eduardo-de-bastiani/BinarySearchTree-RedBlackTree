@@ -382,7 +382,7 @@ public class RedBlackTree {
 	// Método público para calcular a altura da árvore vermelho-preto
 	public int height() {
 		// Começa o cálculo da altura a partir da raiz da árvore
-		return calculateHeight(root);
+		return calculateHeight(root)-1;
 	}
 
 
