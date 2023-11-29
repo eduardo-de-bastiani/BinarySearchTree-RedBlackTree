@@ -12,6 +12,22 @@ public class RedBlackTree {
 		root = nill;
 	}
 
+	public int size() {
+		return calculateSize(root);
+	}
+	
+	private int calculateSize(Node node) {
+		if (node == nill) {
+			return 0;
+		} else {
+			return calculateSize(node.left) + calculateSize(node.right) + 1;
+		}
+	}
+	
+	public boolean isEmpty() {
+		return root == nill;
+	}
+
 	private void preOrderHelper(Node node) {
 		if (node != nill) {
 			System.out.print(node.data + " ");
