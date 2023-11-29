@@ -28,6 +28,39 @@ public class RedBlackTree {
 		return root == nill;
 	}
 
+	//complexidade do metodo clone -> O(n)
+	public RedBlackTree clone() {		
+		RedBlackTree clonedTree = new RedBlackTree();
+		clonedTree.root = cloneNode(this.root, clonedTree);
+		return clonedTree;
+	}
+	
+	private Node cloneNode(Node node, RedBlackTree clonedTree) {
+		if (node == nill) {
+			return clonedTree.getNill();
+		} else {
+			Node clonedNode = new Node();
+			clonedNode.data = node.data;
+			clonedNode.color = node.color;
+			clonedNode.left = cloneNode(node.left, clonedTree);
+			clonedNode.right = cloneNode(node.right, clonedTree);
+	
+			if (clonedNode.left != clonedTree.getNill()) {
+				clonedNode.left.parent = clonedNode;
+			}
+			if (clonedNode.right != clonedTree.getNill()) {
+				clonedNode.right.parent = clonedNode;
+			}
+	
+			return clonedNode;
+		}
+	}
+	
+	//complexidade do metodo contains -> balanceada: O(log n)	não balanceada: O(n)
+	public boolean contains(int key) {
+		return searchTree(key) != nill;
+	}
+
 	private void preOrderHelper(Node node) {
 		if (node != nill) {
 			System.out.print(node.data + " ");
@@ -396,6 +429,7 @@ public class RedBlackTree {
 	}
 
 	// Método público para calcular a altura da árvore vermelho-preto
+	//complexidade metodo height -> O(n)
 	public int height() {
 		// Começa o cálculo da altura a partir da raiz da árvore
 		return calculateHeight(root)-1;
@@ -408,6 +442,7 @@ public class RedBlackTree {
 
 	// insert the key to the tree in its appropriate position
 	// and fix the tree
+	//complexidade do metodo add -> balanceada: O(log n)	não balanceada: O(n)
 	public void add(int key) {
 		Node node = new Node();
 		node.parent = null;
